@@ -16,13 +16,20 @@ newCallBtn.addEventListener('click', function() {
     formContainer.className = 'form-container';
     var formType = formContainer.dataset.type;
     formContainer.innerHTML = `
-        <button type="button" class="call-type-btn" onclick="changeCallType('customer', this)">Customer</button>
-        <button type="button" class="call-type-btn" onclick="changeCallType('mdu', this)">MDU Customer</button>
-        <button type="button" class="call-type-btn" onclick="changeCallType('inquiry', this)">Inquiry</button>
-        <button type="button" class="call-type-btn" onclick="changeCallType('other', this)">Other</button>
+        <button type="button" class="call-type-btn">Customer</button>
+        <button type="button" class="call-type-btn">MDU Customer</button>
+        <button type="button" class="call-type-btn">Inquiry</button>
+        <button type="button" class="call-type-btn">Other</button>
         ${formTemplates['customer']}  <!-- Show the customer form by default -->
     `;
     document.getElementById('formsContainer').appendChild(formContainer);
+
+    var buttons = formContainer.getElementsByClassName('call-type-btn');
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', function(e) {
+            changeCallType(e.target.textContent.toLowerCase(), e.target);
+        });
+    }
 
     formContainer.querySelector('.dismiss-btn').addEventListener('click', function() {
         formContainer.remove();
