@@ -87,13 +87,13 @@ function changeCallType(type, button) {
         hoaNameField.classList.remove('hidden');
         siteIdField.classList.remove('hidden');
         accountNumberField.required = false;
-        hoaNameField.required = true;
-        siteIdField.required = true;
+        hoaNameField.setAttribute('required', '');
+        siteIdField.setAttribute('required', '');
     } else {
         accountNumberField.classList.remove('hidden');
         hoaNameField.classList.add('hidden');
         siteIdField.classList.add('hidden');
-        accountNumberField.required = true;
+        accountNumberField.setAttribute('required', '');
         hoaNameField.required = false;
         siteIdField.required = false;
     }
