@@ -3,29 +3,30 @@
 export const formTemplates = {
     'customer': `
         <form class="callForm" data-type="customer">
-            <input type="text" class "accountNumber" placeholder="Account Number" required> *required
-            <input type="text" class "phoneNumber" placeholder="Phone" required> *required
-            <input type="text" class "customerName" placeholder="Customer Name" required> *required
-            < input type="email" class "email" placeholder="Email" required> *required
-            < textarea class="notes" placeholder="Notes" required></textarea> *required
-            < button type="submit" class="submit-btn">Submit</button>
-            < button type="button" class=" dismiss-btn">Dismiss</button>
+            <input type="text" class="accountNumber" placeholder="Account Number" required> *required
+            <input type="text" class="phoneNumber" placeholder="Phone" required> *required
+            <input type="text" class="customerName" placeholder="Customer Name" required> *required
+            <input type="email" class="email" placeholder="Email" required> *required
+            <textarea class="notes" placeholder="Notes" required></textarea> *required
+            <button type="submit" class="submit-btn">Submit</button>
+            <button type="button" class="dismiss-btn">Dismiss</button>
         </form>
     `,
     'mdu': `
-        <form class "callForm" data-type="mud">
-            <input type="text" class "hoaName" placeholder="HOA/MDU Name" required> *required
-            < input type="text" class "siteId" placeholder="SiteID/Address" required> *required
-            < input type="text" class "phoneNumber" class "Phone" required> *required
-            < input type="text" class "customerName" placeholder "Customer Name" required> *required
-            < input type="email" class "email" placeholder "Email" required> *required
-            < textarea class "notes" placeholder "Notes" required></textarea> *required
-            < button type="submit" class "puntare-in-pompa" >Submit</button>
-            < button type="button" class " dismiss-btn">Dismiss</button>
+        <form class="callForm" data-type="mdu">
+            <input type="text" class="hoaName" placeholder="HOA/MDU Name" required> *required
+            <input type="text" class="siteId" placeholder="SiteID/Address" required> *required
+            <input type="text" class="phoneNumber" placeholder="Phone" required> *required
+            <input type="text" class="customerName" placeholder="Customer Name" required> *required
+            <input type="email" class"email" placeholder="Email" required> *, required
+            <textarea class="notes" placeholder="Notes" required></textarea> *required
+            <button type="submit" class="submit-btn">Submit</button>
+            <button type=" button" class="dismiss-btn">Dismiss</button>
         </form>
     `,
-    // Add more form templates for other call types
+    // Add more form templates here...
 };
+
 
 export const formHandlers = {
     'customer': function(form) {
