@@ -27,16 +27,28 @@ document.getElementById('newCallBtn').addEventListener('click', function() {
 });
 
 function changeCallType(type, button) {
-    var form = button.parentNode.querySelector('form');
-    var customerFields = form.querySelector('.customer-fields');
-    var mduFields = form.querySelector('.mdu-fields');
-    if (type === 'customer') {
-        customerFields.classList.remove('hidden');
-        mduFields.classList.add('hidden');
-    } else if (type === 'mdu') {
-        customerFields.classList.add('hidden');
-        mduFields.classList.remove('hidden');
+    var formContainer = button.parentElement;
+    var accountNumberField = formContainer.querySelector('.accountNumber');
+    var hoaNameField = formContainer.querySelector('.hoaName');
+    var siteIdField = formContainer.querySelector('.siteId');
+
+    if (type === 'mdu') {
+        accountNumberField.classList.add('hidden');
+        hoaNameField.classList.remove('hidden');
+        siteIdField.classList.remove('hidden');
+        accountNumberField.removeAttribute('required');
+        hoaNameField.required = true;
+        siteIdField.required = true;
+    } else {
+        accountNumberField.classList.remove('hidden');
+        hoaNameField.classList.add('hidden');
+        siteIdField.classList.add('hidden');
+        accountNumberField.required = true;
+        hoaNameField.removeAttribute('required');
+        siteIdField.removeAttribute('required');
     }
+}
+
     // Add similar conditions for 'inquiry' and 'other' when their fields are defined
 }
 
