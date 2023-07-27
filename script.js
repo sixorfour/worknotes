@@ -1,24 +1,41 @@
+var formTemplates = {
+    'customer': `
+        <form class="callForm">
+            <input type="text" class="accountNumber" placeholder="Account Number" required> *required
+            <input type="text" class="phoneNumber" placeholder="Phone Number"> **pick one
+            <input type="text" class="customerName" placeholder="Customer Name" required> *required
+            <input type="email" class="emailAddress" placeholder="Email Address"> **pick one
+            <textarea class="notes" placeholder="Notes" required></textarea> *required
+            <button type="submit" class="submit-btn">Submit</button>
+            <button type="button" class="dismiss-btn">Dismiss</button>
+        </form>
+    `,
+    'mdu': `
+        <form class="callForm">
+            <input type="text" class="hoaName" placeholder="HOA/MDU Name" required> *required
+            <input type="text" class="siteId" placeholder="SiteID/Address" required> *required
+            <input type="text" class="phoneNumber" placeholder="Phone Number"> **pick one
+            <input type="text" class="customerName" placeholder="Customer Name" required> *required
+            <input type="email" class="emailAddress" placeholder="Email Address"> **pick one
+            <textarea class="notes" placeholder="Notes" required></textarea> *required
+            <button type="submit" class="submit-btn">Submit</button>
+            <button type="button" class="dismiss-btn">Dismiss</button>
+        </form>
+    `,
+    // Add more form templates for other call types
+};
+
 var lastFormData = null;
 
 document.getElementById('newCallBtn').addEventListener('click', function() {
     var formContainer = document.createElement('div');
     formContainer.className = 'form-container';
     formContainer.innerHTML = `
-        <form class="callForm">
-            <input type="text" class="accountNumber" placeholder="Account Number" required> *required
-            <input type="text" class="hoaName hidden" placeholder="HOA/MDU Name" required> *required
-            <input type="text" class="siteId hidden" placeholder="SiteID/Address" required> *required
-            <button type="button" class="call-type-btn" onclick="changeCallType('customer', this)">Customer</button>
-            <button type="button" class="call-type-btn" onclick="changeCallType('mdu', this)">MDU Customer</button>
-            <button type="button" class="call-type-btn" onclick="changeCallType('inquiry', this)">Inquiry</button>
-            <button type="button" class="call-type-btn" onclick="changeCallType('other', this)">Other</button><br>
-            <input type="text" class="phoneNumber" placeholder="Phone Number"> **pick one<br>
-            <input type="text" class="customerName" placeholder="Customer Name" required> *required<br>
-            <input type="email" class="emailAddress" placeholder="Email Address"> **pick one<br>
-            <textarea class="notes" placeholder="Notes" required></textarea> *required<br>
-            <button type="submit" class="submit-btn">Submit</button>
-            <button type="button" class="dismiss-btn">Dismiss</button>
-        </form>
+        <button type="button" class="call-type-btn" onclick="changeCallType('customer', this)">Customer</button>
+        <button type="button" class="call-type-btn" onclick="changeCallType('mdu', this)">MDU Customer</button>
+        <button type="button" class="call-type-btn" onclick="changeCallType('inquiry', this)">Inquiry</button>
+        <button type="button" class="call-type-btn" onclick="changeCallType('other', this)">Other</button>
+        ${formTemplates['customer']} <!-- Show the customer form by default -->
     `;
     document.getElementById('formsContainer').appendChild(formContainer);
 
@@ -28,13 +45,13 @@ document.getElementById('newCallBtn').addEventListener('click', function() {
 
     formContainer.querySelector('.callForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        var accountNumber = formContainer.querySelector('.accountNumber').value;
-        var phoneNumber = formContainer.querySelector('.phoneNumber').value;
-        var customerName = formContainer.querySelector('.customerName').value;
-        var emailAddress = formContainer.querySelector('.emailAddress').value;
-        var notes = formContainer.querySelector('.notes').value;
-        var hoaName = formContainer.querySelector('.hoaName').value;
-        var siteId = formContainer.querySelector('.siteId').value;
+        var accountNumber = formContainer.querySelector('.accountNumber')?.value;
+        var phoneNumber = formContainer.querySelector('.phoneNumber')?.value;
+        var customerName = formContainer.querySelector('.customerName')?.value;
+        var emailAddress = formContainer.querySelector('.emailAddress')?.value;
+        var notes = formContainer.querySelector('.notes')?.value;
+        var hoaName = formContainer.querySelector('.hoaName')?.value;
+        var siteId = formContainer.querySelector('.siteId')?.value;
 
         var currentFormData = accountNumber + phoneNumber + customerName + emailAddress + notes + hoaName + siteId;
 
@@ -43,7 +60,7 @@ document.getElementById('newCallBtn').addEventListener('click', function() {
             return;
         }
 
-        if (!accountNumberField.classList.contains('hidden') && !/^[123]\d{3,4}$/.test(accountNumber)) {
+        if (accountNumber && !/^[123]\d{3,4}$/.test(accountNumber)) {
             alert('Account number must be 4 or 5 digits long and start with 1, 2, or 3.');
             return;
         }
@@ -78,29 +95,6 @@ document.getElementById('newCallBtn').addEventListener('click', function() {
 
 function changeCallType(type, button) {
     var formContainer = button.parentElement;
-    var accountNumberField = formContainer.querySelector('.accountNumber');
-    var hoaNameField = formContainer.querySelector('.hoaName');
-    var siteIdField = formContainer.querySelector('.siteId');
-
-    if (type === 'mdu') {
-        accountNumberField.setAttribute('disabled', 'disabled');
-        accountNumberField.removeAttribute('required');
-        hoaNameField.removeAttribute('disabled');
-        hoaNameField.setAttribute('required', 'required');
-        siteIdField.removeAttribute('disabled');
-        siteIdField.setAttribute('required', 'required');
-    } else {
-        accountNumberField.removeAttribute('disabled');
-        accountNumberField.setAttribute('required', 'required');
-        hoaNameField.setAttribute('disabled', 'disabled');
-        hoaNameField.removeAttribute('required');
-        siteIdField.setAttribute('disabled', 'disabled');
-        siteIdField.removeAttribute('required');
-    }
+    var form = formContainer.querySelector('.callForm');
+    form.outerHTML = formTemplates[type]; // Replace the form with the selected form template
 }
-
-
-
-
-
-
