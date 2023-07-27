@@ -50,7 +50,7 @@ function changeCallType(type, button) {
 }
 
     // Add similar conditions for 'inquiry' and 'other' when their fields are defined
-}
+
 
 document.addEventListener('submit', function(e) {
     e.preventDefault();
