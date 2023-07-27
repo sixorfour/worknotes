@@ -49,7 +49,7 @@ export const formHandlers = {
 
         // Your validation code here...
 
-        return `MDU Customer:${phoneNumber} ${customerName} ${hoaName} ${siteId} -- ${notes}`;
+        return `MDU Customer:${hoaName} ${customerName} ${phoneNumber} ${siteId} -- ${notes}`;
     },
     // Add more form handlers here...
 };
