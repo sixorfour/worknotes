@@ -84,14 +84,21 @@ function changeCallType(type, button) {
 
     if (type === 'mdu') {
         accountNumberField.setAttribute('disabled', '');
+        accountNumberField.removeAttribute('required');
         hoaNameField.removeAttribute('disabled');
+        hoaNameField.setAttribute('required', '');
         siteIdField.removeAttribute('disabled');
+        siteIdField.setAttribute('required', '');
     } else {
         accountNumberField.removeAttribute('disabled');
+        accountNumberField.setAttribute('required', '');
         hoaNameField.setAttribute('disabled', '');
+        hoaNameField.removeAttribute('required');
         siteIdField.setAttribute('disabled', '');
+        siteIdField.removeAttribute('required');
     }
 }
+
 
 
 
