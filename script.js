@@ -92,6 +92,15 @@ newCallBtn.addEventListener('click', function() {
 
         // Your code to display formData...
         console.log("Displaying form data..."); // Debugging line
+        var infoContainer = document.getElementById('infoContainer');
+        console.log(infoContainer);
+        var infoItem = document.createElement('div');
+        console.log(infoItem);
+        infoItem.className = 'info-item';
+        infoItem.textContent = formData;
+        console.log(infoItem);
+        infoContainer.appendChild(infoItem);
+        console.log("Form data displayed."); // Debugging line
 
         lastFormData = formData;
     });
