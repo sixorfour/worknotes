@@ -83,20 +83,15 @@ function changeCallType(type, button) {
     var siteIdField = formContainer.querySelector('.siteId');
 
     if (type === 'mdu') {
-        accountNumberField.classList.add('hidden');
-        accountNumberField.disabled = true;
-        hoaNameField.classList.remove('hidden');
-        hoaNameField.disabled = false;
-        siteIdField.classList.remove('hidden');
-        siteIdField.disabled = false;
+        accountNumberField.setAttribute('disabled', '');
+        hoaNameField.removeAttribute('disabled');
+        siteIdField.removeAttribute('disabled');
     } else {
-        accountNumberField.classList.remove('hidden');
-        accountNumberField.disabled = false;
-        hoaNameField.classList.add('hidden');
-        hoaNameField.disabled = true;
-        siteIdField.classList.add('hidden');
-        siteIdField.disabled = true;
+        accountNumberField.removeAttribute('disabled');
+        hoaNameField.setAttribute('disabled', '');
+        siteIdField.setAttribute('disabled', '');
     }
 }
+
 
 
