@@ -1,3 +1,10 @@
+console.log('Script loaded'); // This should log 'Script loaded' to the console when the script is loaded
+
+var newCallBtn = document.getElementById('newCallBtn');
+console.log(newCallBtn); // This should log the button element to the console
+
+newCallBtn.addEventListener('click', function() {
+    console.log('Button clicked!'); // This should log 'Button clicked!' to the console when the button is clicked
 document.getElementById('newCallBtn').addEventListener('click', function() {
     var formContainer = document.createElement('div');
     formContainer.className = 'form-container';
