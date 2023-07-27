@@ -81,7 +81,9 @@ newCallBtn.addEventListener('click', function() {
         e.preventDefault();
         var form = e.target;
         var formType = form.dataset.type; // assuming you have added a 'type' dataset to the form
+        console.log("Form type: ", formType); // Debugging line
         var formData = formHandlers[formType](form);
+        console.log("Form data: ", formData); // Debugging line
 
         if (formData === lastFormData) {
             alert('You have already submitted this information.');
@@ -89,6 +91,7 @@ newCallBtn.addEventListener('click', function() {
         }
 
         // Your code to display formData...
+        console.log("Displaying form data..."); // Debugging line
 
         lastFormData = formData;
     });
