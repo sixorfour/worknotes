@@ -47,9 +47,8 @@ function changeCallType(type, button) {
         hoaNameField.removeAttribute('required');
         siteIdField.removeAttribute('required');
     }
-}
-
     // Add similar conditions for 'inquiry' and 'other' when their fields are defined
+}
 
 
 document.addEventListener('submit', function(e) {
