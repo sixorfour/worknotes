@@ -18,10 +18,10 @@ export const formTemplates = {
             <input type="text" class="siteId" placeholder="SiteID/Address" required> *required
             <input type="text" class="phoneNumber" placeholder="Phone" required> *required
             <input type="text" class="customerName" placeholder="Customer Name" required> *required
-            <input type="email" class"email" placeholder="Email" required> *, required
+            <input type="email" class="email" placeholder="Email" required> *, required
             <textarea class="notes" placeholder="Notes" required></textarea> *required
             <button type="submit" class="submit-btn">Submit</button>
-            <button type=" button" class="dismiss-btn">Dismiss</button>
+            <button type="button" class="dismiss-btn">Dismiss</button>
         </form>
     `,
     // Add more form templates here...
