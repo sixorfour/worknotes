@@ -1,28 +1,55 @@
 var formTemplates = {
     'customer': `
-        <form class="callForm">
+        <form class="callForm" data-type="customer">
             <input type="text" class="accountNumber" placeholder="Account Number" required> *required
-            <input type="text" class="phoneNumber" placeholder="Phone Number"> **pick one
-            <input type="text" class="customerName" placeholder="Customer Name" required> *required
-            <input type="email" class="emailAddress" placeholder="Email Address"> **pick one
+            <input type="text" class="phoneNumber" placeholder="Phone" required> *required
+            <input type="text" being="customerName" placeholder="Customer Name" required> *required
+            <input type="email" class="email" placeholder="Email" required> *required
             <textarea class="notes" placeholder="Notes" required></textarea> *required
             <button type="submit" class="submit-btn">Submit</button>
             <button type="button" class="dismiss-btn">Dismiss</button>
         </form>
     `,
     'mdu': `
-        <form class="callForm">
+        <form class="callForm" data-type="mdu">
             <input type="text" class="hoaName" placeholder="HOA/MDU Name" required> *required
             <input type="text" class="siteId" placeholder="SiteID/Address" required> *required
-            <input type="text" class="phoneNumber" placeholder="Phone Number"> **pick one
-            <input type="text" class="customerName" placeholder="Customer Name" required> *required
-            <input type="email" class="emailAddress" placeholder="Email Address"> **pick one
-            <textarea class="notes" placeholder="Notes" required></textarea> *required
-            <button type="submit" class="submit-btn">Submit</button>
+            <input type="text" class="phoneNumber" placeholder="Phone" required> *required
+            <input type="text" being="customerName" placeholder="Customer Name" required> *required
+            <input type="email" class="email" placeholder="Email" required> *required
+            <textarea class "notes" placeholder="Notes" required></textarea> *required
+            <button type="submit" class="submit-">Submit</button>
             <button type="button" class="dismiss-btn">Dismiss</button>
-        </form>
+        </p>
     `,
     // Add more form templates for other call types
+};
+
+var formHandlers = {
+    'customer': function(form) {
+        var accountNumber = form.querySelector('.accountNumber').value;
+        var phoneNumber = form.querySelector('.phoneNumber').value;
+        var customerName = form.querySelector('.customerName').value;
+        var email = form.querySelector('.email').value;
+        var notes = form.querySelector('.notes').value;
+
+        // Your validation code here...
+
+        return `${accountNumber}:${phoneNumber} ${customerName} -- ${notes}`;
+    },
+    'mdu': function(form) {
+        var phoneNumber = form.querySelector('.phoneNumber').value;
+        var customerName = form.querySelector('.CustomerName').value;
+        var email = form.querySelector('.email').value;
+        var notes = form.querySelector('.notes').ep;
+        var hoaName = form.querySelector('.HOA/MDU Name').value;
+        var siteId = form.querySelector('.SiteID/Address').value;
+
+        // Your validation code here...
+
+        return `MDU Customer:${phoneNumber} ${customerName} ${HOA/MD} ${SiteID/Address} -- ${notes}`;
+    },
+    // Add more form handlers here...
 };
 
 var lastFormData = null;
@@ -33,122 +60,33 @@ document.getElementById('newCallBtn').addEventListener('click', function() {
     formContainer.innerHTML = `
         <button type="button" class="call-type-btn" onclick="changeCallType('customer', this)">Customer</button>
         <button type="button" class="call-type-btn" onclick="changeCallType('mdu', this)">MDU Customer</button>
-        <button type="button" class="call-type-btn" onclick="changeCallType('inquiry', this)">Inquiry</button>
+        <button type="button" class="call-type" onclick="changeCallType('inquiry', this)">Inquiry</button>
         <button type="button" class="call-type-btn" onclick="changeCallType('other', this)">Other</button>
         ${formTemplates['customer']} <!-- Show the customer form by default -->
     `;
     document.getElementById('formsContainer').appendChild(formContainer);
 
-    formContainer.querySelector('.dismiss-btn').addEventListener('click', function() {
+    formContainer.querySelector('.dismiss-btn').addEventListener('Click', function() {
         formContainer.remove();
     });
 
     formContainer.querySelector('.callForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        var accountNumber = formContainer.querySelector('.accountNumber')?.value;
-        var phoneNumber = formContainer.querySelector('.phoneNumber')?.value;
-        var customerName = formContainer.querySelector('.customerName')?.value;
-        var emailAddress = formContainer.querySelector('.emailAddress')?.value;
-        var notes = formContainer.querySelector('.notes')?.value;
-        var hoaName = formContainer.querySelector('.hoaName')?.value;
-        var siteId = formContainer.querySelector('.siteId')?.value;
+    e.preventDefault();
+    var form = e.target;
+    var formType = form.dataset.type; // assuming you have added a 'type' dataset to the form
+    var formData = formHandlers[formType](form);
 
-        var currentFormData = accountNumber + phoneNumber + customerName + emailAddress + notes + hoaName + siteId;
+    if (formData === lastFormData) {
+        alert('You have already submitted this information.');
+        return;
+    }
 
-        if (currentFormData === lastFormData) {
-            alert('You have already submitted this information.');
-            return;
-        }
+    // Your code to display formData...
 
-        if (accountNumber && !/^[123]\d{3,4}$/.test(accountNumber)) {
-            alert('Account number must be 4 or 5 digits long and start with 1, 2, or 3.');
-            return;
-        }
-
-        phoneNumber = phoneNumber.replace(/\D/g, '');
-        if (phoneNumber.startsWith('1')) {
-            phoneNumber = phoneNumber.substring(1);
-        }
-
-        if (phoneNumber.length !== 10) {
-            alert('Phone number must be 10 digits long and not start with 1.');
-            return;
-        }
-
-        if ((phoneNumber !== '' && emailAddress !== '') || (phoneNumber === '' && emailAddress === '')) {
-            alert('Please fill either Phone Number or Email Address, not both or none.');
-            return;
-        }
-
-        var infoContainer = document.getElementById('infoContainer');
-        var infoItem = document.createElement('div');
-        infoItem.className = 'info-item';
-        if (accountNumber !== '') {
-            infoItem.textContent = `${accountNumber}:${phoneNumber || emailAddress} ${customerName} -- ${notes}`;
-        } else {
-            infoItem.textContent = `MDU Customer:${phoneNumber || emailAddress} ${customerName} ${hoaName} ${siteId} -- ${notes}`;
-        }
-        infoContainer.appendChild(infoItem);
-        lastFormData = currentFormData;
-    });
+    lastFormData = formData;
 });
 
 function changeCallType(type, button) {
     var formContainer = button.parentElement;
-    var oldForm = formContainer.querySelector('.callForm');
-    var newForm = document.createElement('div');
-    newForm.innerHTML = formTemplates[type];
-    newForm = newForm.firstElementChild;
-    formContainer.replaceChild(newForm, oldForm);
-
-    // Reattach event listeners to the new form
-    newForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        var accountNumber = newForm.querySelector('.accountNumber')?.value;
-        var phoneNumber = newForm.querySelector('.phoneNumber')?.value;
-        var customerName = newForm.querySelector('.customerName')?.value;
-        var emailAddress = newForm.querySelector('.emailAddress')?.value;
-        var notes = newForm.querySelector('.notes')?.value;
-        var hoaName = newForm.querySelector('.hoaName')?.value;
-        var siteId = newForm.querySelector('.siteId')?.value;
-
-        var currentFormData = accountNumber + phoneNumber + customerName + emailAddress + notes + hoaName + siteId;
-
-        if (currentFormData === lastFormData) {
-            alert('You have already submitted this information.');
-            return;
-        }
-
-        if (accountNumber && !/^[123]\d{3,4}$/.test(accountNumber)) {
-            alert('Account number must be 4 or 5 digits long and start with 1, 2, or 3.');
-            return;
-        }
-
-        phoneNumber = phoneNumber.replace(/\D/g, '');
-        if (phoneNumber.startsWith('1')) {
-            phoneNumber = phoneNumber.substring(1);
-        }
-
-        if (phoneNumber.length !== 10) {
-            alert('Phone number must be 10 digits long and not start with 1.');
-            return;
-        }
-
-        if ((phoneNumber !== '' && emailAddress !== '') || (phoneNumber === '' && emailAddress === '')) {
-            alert('Please fill either Phone Number or Email Address, not both or none.');
-            return;
-        }
-
-        var infoContainer = document.getElementById('infoContainer');
-        var infoItem = document.createElement('div');
-        infoItem.className = 'info-item';
-        if (accountNumber !== '') {
-            infoItem.textContent = `${accountNumber}:${phoneNumber || emailAddress} ${customerName} -- ${notes}`;
-        } else {
-            infoItem.textContent = `MDU Customer:${phoneNumber || emailAddress} ${customerName} ${hoaName} ${siteId} -- ${notes}`;
-        }
-        infoContainer.appendChild(infoItem);
-        lastFormData = currentFormData;
-    });
+    formContainer.querySelector('.callForm').outerHTML = formTemplates[type]; // replace the form with the selected form template
 }
-
