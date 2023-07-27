@@ -95,6 +95,60 @@ document.getElementById('newCallBtn').addEventListener('click', function() {
 
 function changeCallType(type, button) {
     var formContainer = button.parentElement;
-    var form = formContainer.querySelector('.callForm');
-    form.outerHTML = formTemplates[type]; // Replace the form with the selected form template
+    var oldForm = formContainer.querySelector('.callForm');
+    var newForm = document.createElement('div');
+    newForm.innerHTML = formTemplates[type];
+    newForm = newForm.firstElementChild;
+    formContainer.replaceChild(newForm, oldForm);
+
+    // Reattach event listeners to the new form
+    newForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var accountNumber = newForm.querySelector('.accountNumber')?.value;
+        var phoneNumber = newForm.querySelector('.phoneNumber')?.value;
+        var customerName = newForm.querySelector('.customerName')?.value;
+        var emailAddress = newForm.querySelector('.emailAddress')?.value;
+        var notes = newForm.querySelector('.notes')?.value;
+        var hoaName = newForm.querySelector('.hoaName')?.value;
+        var siteId = newForm.querySelector('.siteId')?.value;
+
+        var currentFormData = accountNumber + phoneNumber + customerName + emailAddress + notes + hoaName + siteId;
+
+        if (currentFormData === lastFormData) {
+            alert('You have already submitted this information.');
+            return;
+        }
+
+        if (accountNumber && !/^[123]\d{3,4}$/.test(accountNumber)) {
+            alert('Account number must be 4 or 5 digits long and start with 1, 2, or 3.');
+            return;
+        }
+
+        phoneNumber = phoneNumber.replace(/\D/g, '');
+        if (phoneNumber.startsWith('1')) {
+            phoneNumber = phoneNumber.substring(1);
+        }
+
+        if (phoneNumber.length !== 10) {
+            alert('Phone number must be 10 digits long and not start with 1.');
+            return;
+        }
+
+        if ((phoneNumber !== '' && emailAddress !== '') || (phoneNumber === '' && emailAddress === '')) {
+            alert('Please fill either Phone Number or Email Address, not both or none.');
+            return;
+        }
+
+        var infoContainer = document.getElementById('infoContainer');
+        var infoItem = document.createElement('div');
+        infoItem.className = 'info-item';
+        if (accountNumber !== '') {
+            infoItem.textContent = `${accountNumber}:${phoneNumber || emailAddress} ${customerName} -- ${notes}`;
+        } else {
+            infoItem.textContent = `MDU Customer:${phoneNumber || emailAddress} ${customerName} ${hoaName} ${siteId} -- ${notes}`;
+        }
+        infoContainer.appendChild(infoItem);
+        lastFormData = currentFormData;
+    });
 }
+
