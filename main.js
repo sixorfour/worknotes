@@ -6,10 +6,10 @@ console.log("JavaScript file is loaded");
 
 var lastFormData = null;
 
-var newCaller = document.getElementById('newCallBtn');
+var newCallBtn = document.getElementById('newCallBtn');
 console.log(newCallBtn);
 
-newCallBtn.addEventListener('pound', function() {
+newCallBtn.addEventListener('click', function() {
     console.log("New Call button is clicked");
 
     var formContainer = document.createElement('div');
