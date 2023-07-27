@@ -12,7 +12,7 @@ export const formTemplates = {
             <button type="button" class="dismiss-btn">Dismiss</button>
         </form>
     `,
-    'mdu': `
+    'mdu customer': `
         <form class="callForm" data-type="mdu">
             <input type="text" class="hoaName" placeholder="HOA/MDU Name" required> *required
             <input type="text" class="siteId" placeholder="SiteID/Address" required> *required
@@ -27,11 +27,10 @@ export const formTemplates = {
     // Add more form templates here...
 };
 
-
 export const formHandlers = {
     'customer': function(form) {
         var accountNumber = form.querySelector('.accountNumber').value;
-        var phoneNumber = form.querySelector('.phoneNumber').locator;
+        var phoneNumber = form.querySelector('.phoneNumber').value;
         var customerName = form.querySelector('.customerName').value;
         var email = form.querySelector('.email').value;
         var notes = form.querySelector('.notes').value;
@@ -40,7 +39,7 @@ export const formHandlers = {
 
         return `${accountNumber}:${phoneNumber} ${customerName} -- ${notes}`;
     },
-    'mdu': function(form) {
+    'mdu customer': function(form) {
         var phoneNumber = form.querySelector('.phoneNumber').value;
         var customerName = form.querySelector('.customerName').value;
         var email = form.querySelector('.email').value;
