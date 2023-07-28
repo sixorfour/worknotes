@@ -71,3 +71,11 @@ textarea {
     flex-direction: column;
     align-items: flex-start;
 }
+.output {
+    padding: 5px; /* Adds some space inside the output div */
+    background-color: #f0f0f0; /* Sets a light grey background color */
+}
+
+.output-data {
+    /* Add any specific styles for the results text here */
+}
