@@ -4,17 +4,16 @@ export const formTemplates = {
     'customer': `
         <form class="callForm" data-type="customer">
             <div class="input">
-                <div><input type="text" class="accountNumber" placeholder="Account Number*" required></div>
-                <div><input type="text" class="phoneNumber" placeholder="Phone Number*" required></div>
-                <div><input type="text" class="customerName" placeholder="Customer Name*" required></div>
-                <div><input type="email" class="email" placeholder="Email*" required></div>
-                <div><textarea class="notes" placeholder="Notes*" required></textarea></div>
+                <div><input type="text" class="accountNumber" placeholder="Account Number *" required></div>
+                <div><input type="text" class="phoneNumber" placeholder="Phone Number *" required></div>
+                <div><input type="text" class="customerName" placeholder="Customer Name *" required></div>
+                <div><input type="email" class="email" placeholder="Email *" required></div>
+                <div><textarea class="notes" placeholder="Notes *" required></textarea></div>
                 <button type="submit" class="submit-btn">Submit</button>
-                <button type="button" class="dismiss-btn">Dismiss</button>
             </div>
+            <button type="button" class="dismiss-btn">Dismiss</button>
             <div class="output hidden">
                 <div class="output-data"></div>
-                <button type="button" class="update-btn">Update</button>
                 <button type="button" class="toggle-btn">Maximize</button>
                 <button type="button" class="delete-btn">Delete</button>
             </div>
@@ -30,11 +29,10 @@ export const formTemplates = {
                 <div><input type="email" class="email" placeholder="Email *" required></div>
                 <div><textarea class="notes" placeholder="Notes *" required></textarea></div>
                 <button type="submit" class="submit-btn">Submit</button>
-                <button type="button" class="dismiss-btn">Dismiss</button>
-            </div>                   
+            </div>
+            <button type="button" class="dismiss-btn">Dismiss</button>
             <div class="output hidden">
                 <div class="output-data"></div>
-                <button type="button" class="update-btn">Update</button>
                 <button type="button" class="toggle-btn">Maximize</button>
                 <button type="button" class="delete-btn">Delete</button>
             </div>
@@ -42,6 +40,7 @@ export const formTemplates = {
     `,
     // Add more form templates here...
 };
+
 
 
 
