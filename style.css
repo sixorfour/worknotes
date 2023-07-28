@@ -1,9 +1,10 @@
 .form-container {
     margin-bottom: 5px;
-    border: 1px solid black; /* Adds a border around the form */
-    padding: 5px; /* Adds some space inside the form container */
-    width: 100%; /* New property to stretch the container to full width */
-    box-sizing: border-box; /* New property to include padding and border in the container's total width */
+    border: 1px solid black;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: flex-start;
 }
 
 .info {
@@ -17,6 +18,7 @@
 .dismiss-btn {
     background-color: red;
     color: white;
+    margin-left: 5px; /* Adds some space to the left of the dismiss button */
 }
 
 .submit-btn {
@@ -30,12 +32,12 @@ textarea {
 }
 
 .call-type-btn {
-    margin: 5px; /* Adds space around the buttons */
+    margin: 5px;
 }
 
 .call-type-btn-container {
     display: flex;
-    margin-bottom: 5px; /* Adds space below the buttons */
+    margin-bottom: 5px;
 }
 
 .hidden {
@@ -50,19 +52,15 @@ textarea {
 .callForm input[type="email"],
 .callForm textarea {
     display: block;
-    margin-bottom: 5px; /* Add some space between fields */
-}
-
-.callForm {
-    display: flex;
-    flex-direction: column; /* Aligns items vertically */
-}
-
-.callForm > div, /* Selects all divs that are direct children of .callForm */
-.callForm > button /* Selects all buttons that are direct children of .callForm */ {
-    align-items: flex-start; /* Aligns items to the start (left side) of the container */
     margin-bottom: 5px;
-    padding-left: 5px; /* Add 5px space to the left of each div and button in .callForm */
+}
+
+.callForm > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 5px;
+    padding-left: 5px;
 }
 
 .callForm div input,
@@ -77,10 +75,20 @@ textarea {
 }
 
 .output {
-    padding: 5px; /* Adds some space inside the output div */
-    background-color: #f0f0f0; /* Sets a light grey background color */
+    padding: 5px;
+    background-color: #f0f0f0;
 }
 
 .output-data {
-    /* Add any specific styles for the results text here */
+}
+
+/* New CSS */
+.callForm .input {
+    display: flex;
+    flex-direction: column;
+}
+
+/* New CSS */
+.callForm .input + .dismiss-btn {
+    align-self: flex-start;
 }
