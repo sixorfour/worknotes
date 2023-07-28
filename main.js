@@ -58,10 +58,6 @@ function addSubmitListener(form) {
         toggleForm(form);
     });
 
-    var updateButton = form.querySelector('.update-btn');
-    updateButton.addEventListener('click', function() {
-        updateForm(form);
-    });
 }
 
 function updateForm(form) {
