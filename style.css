@@ -2,7 +2,10 @@
     margin-bottom: 5px;
     border: 1px solid black; /* Adds a border around the form */
     padding: 5px; /* Adds some space inside the form container */
+    box-sizing: border-box; /* New property to include padding and border in the container's total width */
+    align-items: flex-start; /* New property to align items to the start of the container */
 }
+
 
 .info {
     color: green;
