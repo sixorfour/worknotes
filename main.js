@@ -124,10 +124,5 @@ function changeCallType(type, button) {
         }
     });
 
-    var toggleButton = newForm.querySelector('.toggle-btn');
-    toggleButton.addEventListener('click', function() {
-        toggleForm(newForm, formContainer);
-    });
-
     addSubmitListener(newForm, formContainer);
 }
