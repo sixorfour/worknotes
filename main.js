@@ -32,34 +32,35 @@ newCallBtn.addEventListener('click', function() {
         });
     });
 
-    // Wait for the next repaint before selecting the form
-    requestAnimationFrame(function() {
-        var callForm = formContainer.querySelector('.callForm');
-        addSubmitListener(callForm);
-    });
+    var callForm = formContainer.querySelector('.callForm');
+    addSubmitListener(callForm);
 });
-
 
 function addSubmitListener(form) {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         updateForm(form);
         toggleForm(form);
+    });
 
-        var deleteButton = form.querySelector('.delete-btn');
-        deleteButton.addEventListener('click', function() {
-            form.parentElement.remove();
-        });
+    var dismissButton = form.querySelector('.dismiss-btn');
+    dismissButton.addEventListener('click', function() {
+        form.parentElement.remove();
+    });
 
-        var toggleButton = form.querySelector('.toggle-btn');
-        toggleButton.addEventListener('click', function() {
-            toggleForm(form);
-        });
+    var deleteButton = form.querySelector('.delete-btn');
+    deleteButton.addEventListener('click', function() {
+        form.parentElement.remove();
+    });
 
-        var updateButton = form.querySelector('.update-btn');
-        updateButton.addEventListener('click', function() {
-            updateForm(form);
-        });
+    var toggleButton = form.querySelector('.toggle-btn');
+    toggleButton.addEventListener('click', function() {
+        toggleForm(form);
+    });
+
+    var updateButton = form.querySelector('.update-btn');
+    updateButton.addEventListener('click', function() {
+        updateForm(form);
     });
 }
 
@@ -77,11 +78,11 @@ function toggleForm(form) {
     if (input.classList.contains('hidden')) {
         input.classList.remove('hidden');
         output.classList.add('hidden');
-        toggleButton.textContent = 'Maximize';
+        toggleButton.textContent = 'Minimize';
     } else {
         input.classList.add('hidden');
         output.classList.remove('hidden');
-        toggleButton.textContent = 'Minimize';
+        toggleButton.textContent = 'Maximize';
     }
 }
 
@@ -118,11 +119,6 @@ function changeCallType(type, button) {
         if (oldFormData.hasOwnProperty(input.className)) {
             input.value = oldFormData[input.className];
         }
-    });
-
-    var dismissButton = newForm.querySelector('.dismiss-btn');
-    dismissButton.addEventListener('click', function() {
-        formContainer.remove();
     });
 
     addSubmitListener(newForm);
