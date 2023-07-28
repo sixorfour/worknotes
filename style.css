@@ -62,3 +62,9 @@ textarea {
 .callForm div textarea {
     margin-right: 10px;
 }
+
+/* New CSS */
+#formsContainer {
+    display: flex;
+    flex-direction: column;
+}
