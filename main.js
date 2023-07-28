@@ -46,6 +46,10 @@ function addSubmitListener(form) {
         if (dismissButton) {
             dismissButton.style.display = 'none';
         }
+        var callTypeButtons = form.parentElement.querySelector('.call-type-btn-container');
+        if (callTypeButtons) {
+            callTypeButtons.style.display = 'none';
+        }
     });
 
     var dismissButton = form.querySelector('.dismiss-btn');
@@ -75,15 +79,22 @@ function toggleForm(form) {
     var input = form.querySelector('.input');
     var output = form.querySelector('.output');
     var toggleButton = form.querySelector('.toggle-btn');
+    var callTypeButtons = form.parentElement.querySelector('.call-type-btn-container');
 
     if (input.classList.contains('hidden')) {
         input.classList.remove('hidden');
         output.classList.add('hidden');
         toggleButton.textContent = 'Minimize';
+        if (callTypeButtons) {
+            callTypeButtons.style.display = 'none';
+        }
     } else {
         input.classList.add('hidden');
         output.classList.remove('hidden');
         toggleButton.textContent = 'Maximize';
+        if (callTypeButtons) {
+            callTypeButtons.style.display = 'flex';
+        }
     }
 }
 
