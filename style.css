@@ -31,7 +31,6 @@ textarea {
 
 .call-type-btn-container {
     display: flex;
-    justify-content: center; /* Centers the buttons horizontally */
     margin-bottom: 5px; /* Adds space below the buttons */
 }
 
