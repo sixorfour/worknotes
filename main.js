@@ -32,42 +32,53 @@ newCallBtn.addEventListener('click', function() {
         });
     });
 
-    var dismissButton = formContainer.querySelector('.dismiss-btn');
-    dismissButton.addEventListener('click', function() {
+    var callForm = formContainer.querySelector('.callForm');
+    addSubmitListener(callForm);
+
+    var deleteButton = callForm.querySelector('.delete-btn');
+    deleteButton.addEventListener('click', function() {
         formContainer.remove();
     });
 
-    var callForm = formContainer.querySelector('.callForm');
-    addSubmitListener(callForm);
+    var toggleButton = callForm.querySelector('.toggle-btn');
+    toggleButton.addEventListener('click', function() {
+        toggleForm(callForm);
+    });
+
+    var updateButton = callForm.querySelector('.update-btn');
+    updateButton.addEventListener('click', function() {
+        updateForm(callForm);
+    });
 });
 
 function addSubmitListener(form) {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        var formType = form.dataset.type; // assuming you have added a 'type' dataset to the form
-        console.log("Form type: ", formType); // Debugging line
-        var formData = formHandlers[formType](form);
-        console.log("Form data: ", formData); // Debugging line
-
-        if ( formData === lastFormData) {
-            alert('You have already submitted this information.');
-            return;
-        }
-
-        // Your code to display formData...
-        console.log("Displaying form data..."); // Debugging line
-        var infoContainer = document.getElementById('infoContainer');
-        console.log(infoContainer);
-        var infoItem = document.createElement('div');
-        console.log(infoItem);
-        infoItem.className = 'info-item';
-        infoItem.textContent = formData;
-        console.log(infoItem); // Changed from console.log(info);
-        infoContainer.appendChild(infoItem);
-        console.log("Form data displayed."); // Debugging line
-
-        lastFormData = formData;
+        updateForm(form);
+        toggleForm(form);
     });
+}
+
+function updateForm(form) {
+    var formType = form.dataset.type; // assuming you have added a 'type' dataset to the form
+    var formData = formHandlers[formType](form);
+    var outputData = form.querySelector('.output-data');
+    outputData.textContent = formData;
+}
+
+function toggleForm(form) {
+    var input = form.querySelector('.input');
+    var output = form.querySelector('.output');
+    var toggleButton = form.querySelector('.toggle-btn');
+    if (input.classList.contains('hidden')) {
+        input.classList.remove('hidden');
+        output.classList.add('hidden');
+        toggleButton.textContent = 'Minimize';
+    } else {
+        input.classList.add('hidden');
+        output.classList.remove('hidden');
+        toggleButton.textContent = 'Maximize';
+    }
 }
 
 function changeCallType(type, button) {
@@ -108,6 +119,16 @@ function changeCallType(type, button) {
     var dismissButton = newForm.querySelector('.dismiss-btn');
     dismissButton.addEventListener('click', function() {
         formContainer.remove();
+    });
+
+    var toggleButton = newForm.querySelector('.toggle-btn');
+    toggleButton.addEventListener('click', function() {
+        toggleForm(newForm);
+    });
+
+    var updateButton = newForm.querySelector('.update-btn');
+    updateButton.addEventListener('click', function() {
+        updateForm(newForm);
     });
 
     addSubmitListener(newForm);
