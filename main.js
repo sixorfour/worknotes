@@ -41,15 +41,6 @@ function addSubmitListener(form) {
         e.preventDefault();
         updateForm(form);
         toggleForm(form);
-
-        var dismissButton = form.querySelector('.dismiss-btn');
-        if (dismissButton) {
-            dismissButton.style.display = 'none';
-        }
-        var callTypeButtons = form.parentElement.querySelector('.call-type-btn-container');
-        if (callTypeButtons) {
-            callTypeButtons.style.display = 'none';
-        }
     });
 
     var dismissButton = form.querySelector('.dismiss-btn');
@@ -86,14 +77,14 @@ function toggleForm(form) {
         output.classList.add('hidden');
         toggleButton.textContent = 'Minimize';
         if (callTypeButtons) {
-            callTypeButtons.style.display = 'none';
+            callTypeButtons.style.display = 'flex';
         }
     } else {
         input.classList.add('hidden');
         output.classList.remove('hidden');
         toggleButton.textContent = 'Maximize';
         if (callTypeButtons) {
-            callTypeButtons.style.display = 'flex';
+            callTypeButtons.style.display = 'none';
         }
     }
 }
