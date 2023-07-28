@@ -32,6 +32,11 @@ newCallBtn.addEventListener('click', function() {
 
     var callForm = formContainer.querySelector('.callForm');
     addSubmitListener(callForm, formContainer);
+
+    var dismissButton = callForm.querySelector('.dismiss-btn');
+    dismissButton.addEventListener('click', function() {
+        formContainer.remove();
+    });
 });
 
 function addSubmitListener(form, formContainer) {
@@ -117,11 +122,6 @@ function changeCallType(type, button) {
         if (oldFormData.hasOwnProperty(input.className)) {
             input.value = oldFormData[input.className];
         }
-    });
-
-    var dismissButton = newForm.querySelector('.dismiss-btn');
-    dismissButton.addEventListener('click', function() {
-        formContainer.remove();
     });
 
     var toggleButton = newForm.querySelector('.toggle-btn');
