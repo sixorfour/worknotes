@@ -47,6 +47,8 @@ function addSubmitListener(form, formContainer) {
 
         var dismissButton = formContainer.querySelector('.dismiss-btn');
         dismissButton.remove(); // Removes the dismiss button when the form is submitted
+
+        form.dataset.submitted = 'true'; // Add 'submitted' dataset to the form
     });
 
     var deleteButton = form.querySelector('.delete-btn');
@@ -116,12 +118,23 @@ function changeCallType(type, button) {
     newForm.dataset.type = type; // Set the 'type' dataset to the new form type
     formContainer.appendChild(newForm);
 
+    // If the old form was submitted, change the text content of the submit button to 'Save'
+    if (oldForm.dataset.submitted === 'true') {
+        var submitButton = newForm.querySelector('.submit-btn');
+        submitButton.textContent = 'Save';
+    }
+
     // Populate the fields in the new form with the old form data, if available
     var newInputs = newForm.querySelectorAll('input, textarea');
     newInputs.forEach(function(input) {
         if (oldFormData.hasOwnProperty(input.className)) {
             input.value = oldFormData[input.className];
         }
+    });
+
+    var toggleButton = newForm.querySelector('.toggle-btn');
+    toggleButton.addEventListener('click', function() {
+        toggleForm(newForm, formContainer);
     });
 
     addSubmitListener(newForm, formContainer);
