@@ -32,9 +32,13 @@ newCallBtn.addEventListener('click', function() {
         });
     });
 
-    var callForm = formContainer.querySelector('.callForm');
-    addSubmitListener(callForm);
+    // Wait for the next repaint before selecting the form
+    requestAnimationFrame(function() {
+        var callForm = formContainer.querySelector('.callForm');
+        addSubmitListener(callForm);
+    });
 });
+
 
 function addSubmitListener(form) {
     form.addEventListener('submit', function(e) {
