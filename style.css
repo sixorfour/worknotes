@@ -19,7 +19,7 @@
     color: white;
     width: fit-content; /* This should force the button to be only as wide as its content */
     padding: 5px 10px; /* Add some padding around the text */
-    padding-left: 20px;
+    padding-left: 5px; /* Align with the form fields */
 }
 
 
@@ -29,6 +29,9 @@
     width: fit-content; /* This should force the button to be only as wide as its content */
     padding: 5px 10px; /* Add some padding around the text */
 }
+
+/* Rest of the CSS... */
+
 
 textarea {
     width: 100%;
