@@ -1,7 +1,7 @@
 .form-container {
     margin-bottom: 5px;
-    border: 2px solid black; /* Adds a border around the form */
-    padding: 10px; /* Adds some space inside the form container */
+    border: 1px solid black; /* Adds a border around the form */
+    padding: 5px; /* Adds some space inside the form container */
 }
 
 .info {
