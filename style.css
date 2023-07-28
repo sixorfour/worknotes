@@ -14,8 +14,7 @@
     color: red;
 }
 
-.dismiss-btn,
-.submit-btn {
+.dismiss-btn {
     background-color: red;
     color: white;
     width: auto; /* Takes only as much space as needed */
