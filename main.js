@@ -15,10 +15,12 @@ newCallBtn.addEventListener('click', function() {
     var formContainer = document.createElement('div');
     formContainer.className = 'form-container';
     formContainer.innerHTML = `
-        <button type="button" class="call-type-btn">Customer</button>
-        <button type="button" class="call-type-btn">MDU Customer</button>
-        <button type="button" class="call-type-btn">Inquiry</button>
-        <button type="button" class="call-type-btn">Other</button>
+        <div class="call-type-btn-container">
+            <button type="button" class="call-type-btn">Customer</button>
+            <button type="button" class="call-type-btn">MDU Customer</button>
+            <button type="button" class="call-type-btn">Inquiry</button>
+            <button type="button" class="call-type-btn">Other</button>
+        </div>
         ${formTemplates['customer']}  <!-- Show the customer form by default -->
     `;
     document.getElementById('formsContainer').appendChild(formContainer);
@@ -53,7 +55,7 @@ function addSubmitListener(form) {
         }
 
         // Your code to display formData...
-        console.log("Displaying form data..."); // Debuging line
+        console.log("Displaying form data..."); // Debugging line
         var infoContainer = document.getElementById('infoContainer');
         console.log(infoContainer);
         var infoItem = document.createElement('div');
@@ -62,14 +64,14 @@ function addSubmitListener(form) {
         infoItem.textContent = formData;
         console.log(infoItem); // Changed from console.log(info);
         infoContainer.appendChild(infoItem);
-        console.log("Form data displayed."); // Debuging line
+        console.log("Form data displayed."); // Debugging line
 
         lastFormData = formData;
     });
 }
 
 function changeCallType(type, button) {
-    var formContainer = button.parentElement;
+    var formContainer = button.parentElement.parentElement;
 
     // Check if the requested form type exists
     if (!formTemplates[type]) {
