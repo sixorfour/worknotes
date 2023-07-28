@@ -40,8 +40,13 @@ function addSubmitListener(form, formContainer) {
         updateForm(form);
         toggleForm(form, formContainer);
 
-        var dismissButton = formContainer.querySelector('.dismiss-btn');
+        var dismissButton = form.querySelector('.dismiss-btn');
         dismissButton.remove(); // Removes the dismiss button when the form is submitted
+    });
+
+    var dismissButton = form.querySelector('.dismiss-btn');
+    dismissButton.addEventListener('click', function() {
+        formContainer.remove();
     });
 
     var deleteButton = form.querySelector('.delete-btn');
@@ -116,15 +121,5 @@ function changeCallType(type, button) {
         }
     });
 
-    var dismissButton = newForm.querySelector('.dismiss-btn');
-    dismissButton.addEventListener('click', function() {
-        formContainer.remove();
-    });
-
-    var toggleButton = newForm.querySelector('.toggle-btn');
-    toggleButton.addEventListener('click', function() {
-        toggleForm(newForm);
-    });
-
-    addSubmitListener(newForm);
+    addSubmitListener(newForm, formContainer);
 }
