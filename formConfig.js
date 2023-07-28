@@ -11,6 +11,7 @@ export const formTemplates = {
                 <div><textarea class="notes" placeholder="Notes *" required></textarea></div>
                 <button type="submit" class="submit-btn">Submit</button>
             </div>
+            <button type="button" class="dismiss-btn">Dismiss</button>
             <div class="output hidden">
                 <div class="output-data"></div>
                 <button type="button" class="update-btn">Update</button>
@@ -30,6 +31,7 @@ export const formTemplates = {
                 <div><textarea class="notes" placeholder="Notes *" required></textarea></div>
                 <button type="submit" class="submit-btn">Submit</button>
             </div>
+            <button type="button" class="dismiss-btn">Dismiss</button>
             <div class="output hidden">
                 <div class="output-data"></div>
                 <button type="button" class="update-btn">Update</button>
@@ -40,6 +42,7 @@ export const formTemplates = {
     `,
     // Add more form templates here...
 };
+
 
 
 
