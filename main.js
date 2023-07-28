@@ -34,21 +34,6 @@ newCallBtn.addEventListener('click', function() {
 
     var callForm = formContainer.querySelector('.callForm');
     addSubmitListener(callForm);
-
-    var deleteButton = callForm.querySelector('.delete-btn');
-    deleteButton.addEventListener('click', function() {
-        formContainer.remove();
-    });
-
-    var toggleButton = callForm.querySelector('.toggle-btn');
-    toggleButton.addEventListener('click', function() {
-        toggleForm(callForm);
-    });
-
-    var updateButton = callForm.querySelector('.update-btn');
-    updateButton.addEventListener('click', function() {
-        updateForm(callForm);
-    });
 });
 
 function addSubmitListener(form) {
@@ -56,6 +41,21 @@ function addSubmitListener(form) {
         e.preventDefault();
         updateForm(form);
         toggleForm(form);
+
+        var deleteButton = form.querySelector('.delete-btn');
+        deleteButton.addEventListener('click', function() {
+            form.parentElement.remove();
+        });
+
+        var toggleButton = form.querySelector('.toggle-btn');
+        toggleButton.addEventListener('click', function() {
+            toggleForm(form);
+        });
+
+        var updateButton = form.querySelector('.update-btn');
+        updateButton.addEventListener('click', function() {
+            updateForm(form);
+        });
     });
 }
 
@@ -73,11 +73,11 @@ function toggleForm(form) {
     if (input.classList.contains('hidden')) {
         input.classList.remove('hidden');
         output.classList.add('hidden');
-        toggleButton.textContent = 'Minimize';
+        toggleButton.textContent = 'Maximize';
     } else {
         input.classList.add('hidden');
         output.classList.remove('hidden');
-        toggleButton.textContent = 'Maximize';
+        toggleButton.textContent = 'Minimize';
     }
 }
 
@@ -119,16 +119,6 @@ function changeCallType(type, button) {
     var dismissButton = newForm.querySelector('.dismiss-btn');
     dismissButton.addEventListener('click', function() {
         formContainer.remove();
-    });
-
-    var toggleButton = newForm.querySelector('.toggle-btn');
-    toggleButton.addEventListener('click', function() {
-        toggleForm(newForm);
-    });
-
-    var updateButton = newForm.querySelector('.update-btn');
-    updateButton.addEventListener('click', function() {
-        updateForm(newForm);
     });
 
     addSubmitListener(newForm);
