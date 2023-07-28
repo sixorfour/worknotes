@@ -76,12 +76,12 @@ function toggleForm(form, formContainer) {
     if (input.classList.contains('hidden')) {
         input.classList.remove('hidden');
         output.classList.add('hidden');
-        toggleButton.textContent = 'Minimize';
+        toggleButton.textContent = 'Minimize'; // This remains the same
         callTypeBtnContainer.style.display = 'flex';
     } else {
         input.classList.add('hidden');
         output.classList.remove('hidden');
-        toggleButton.textContent = 'Maximize';
+        toggleButton.textContent = 'Edit'; // This changes from "Maximize" to "Edit"
         callTypeBtnContainer.style.display = 'none';
     }
 }
