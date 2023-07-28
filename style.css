@@ -1,27 +1,73 @@
 .form-container {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
+    border: 1px solid black; /* Adds a border around the form */
+    padding: 5px; /* Adds some space inside the form container */
 }
+
 .info {
     color: green;
 }
+
 .error {
     color: red;
 }
+
 .dismiss-btn {
     background-color: red;
     color: white;
 }
+
 .submit-btn {
     background-color: green;
     color: white;
 }
+
 textarea {
     width: 100%;
     height: 100px;
 }
+
 .call-type-btn {
-    margin-left: 10px;
+    margin: 5px; /* Adds space around the buttons */
 }
+
+.call-type-btn-container {
+    display: flex;
+    margin-bottom: 5px; /* Adds space below the buttons */
+}
+
 .hidden {
     display: none;
+}
+
+.info-item {
+    color: green;
+}
+
+/* Existing CSS */
+.callForm input[type="text"], 
+.callForm input[type="email"],
+.callForm textarea {
+    display: block;
+    margin-bottom: 5px; /* Add some space between fields */
+}
+
+/* Updated CSS */
+.callForm > div, /* Selects all divs that are direct children of .callForm */
+.callForm > button /* Selects all buttons that are direct children of .callForm */ {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    padding-left: 5px; /* Add 5px space to the left of each div and button in .callForm */
+}
+
+.callForm div input,
+.callForm div textarea {
+    margin-right: 10px;
+}
+
+#formsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
