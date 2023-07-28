@@ -19,6 +19,7 @@
     color: white;
     width: fit-content; /* This should force the button to be only as wide as its content */
     padding: 5px 10px; /* Add some padding around the text */
+    padding-left: 20px;
 }
 
 
