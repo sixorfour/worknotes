@@ -2,6 +2,8 @@
     margin-bottom: 5px;
     border: 1px solid black; /* Adds a border around the form */
     padding: 5px; /* Adds some space inside the form container */
+    width: 100%; /* New property to stretch the container to full width */
+    box-sizing: border-box; /* New property to include padding and border in the container's total width */
 }
 
 .info {
@@ -15,12 +17,21 @@
 .dismiss-btn {
     background-color: red;
     color: white;
+    width: fit-content; /* This should force the button to be only as wide as its content */
+    padding: 5px 10px; /* Add some padding around the text */
+    padding-left: 5px; /* Align with the form fields */
 }
+
 
 .submit-btn {
     background-color: green;
     color: white;
+    width: fit-content; /* This should force the button to be only as wide as its content */
+    padding: 5px 10px; /* Add some padding around the text */
 }
+
+/* Rest of the CSS... */
+
 
 textarea {
     width: 100%;
@@ -44,7 +55,6 @@ textarea {
     color: green;
 }
 
-/* Existing CSS */
 .callForm input[type="text"], 
 .callForm input[type="email"],
 .callForm textarea {
@@ -52,11 +62,14 @@ textarea {
     margin-bottom: 5px; /* Add some space between fields */
 }
 
-/* Updated CSS */
+.callForm {
+    display: flex;
+    flex-direction: column; /* Aligns items vertically */
+}
+
 .callForm > div, /* Selects all divs that are direct children of .callForm */
 .callForm > button /* Selects all buttons that are direct children of .callForm */ {
-    display: flex;
-    align-items: center;
+    align-items: flex-start; /* Aligns items to the start (left side) of the container */
     margin-bottom: 5px;
     padding-left: 5px; /* Add 5px space to the left of each div and button in .callForm */
 }
@@ -70,4 +83,26 @@ textarea {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+.output {
+    padding: 5px; /* Adds some space inside the output div */
+    background-color: #f0f0f0; /* Sets a light grey background color */
+}
+
+.output-data {
+    /* Add any specific styles for the results text here */
+}
+
+/* New CSS */
+.button-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.update-btn,
+.toggle-btn,
+.delete-btn {
+    width: auto; /* Takes only as much space as needed */
+    padding: 5px 10px; /* Add some padding around the text */
 }
