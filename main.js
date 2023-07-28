@@ -84,10 +84,10 @@ function changeCallType(type, button) {
     }
 
     // Append the new form
-    var newForm = document.createElement('form');
-    newForm.className = 'callForm';
-    newForm.dataset.type = type;
+    var newForm = document.createElement('div');
     newForm.innerHTML = formTemplates[type];
+    newForm.className = 'callForm';
+    newForm.dataset.type = type; // Set the 'type' dataset to the new form type
     formContainer.appendChild(newForm);
 
     // Populate the fields in the new form with the old form data, if available
