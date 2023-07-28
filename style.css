@@ -51,11 +51,12 @@ textarea {
     margin-bottom: 5px; /* Add some space between fields */
 }
 
-/* Existing CSS */
+/* Updated CSS */
 .callForm div {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
+    padding-left: 5px; /* Add 5px space to the left of each div in .callForm */
 }
 
 .callForm div input,
