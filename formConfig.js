@@ -9,9 +9,11 @@ export const formTemplates = {
                 <div><input type="text" class="customerName" placeholder="Customer Name *" required></div>
                 <div><input type="email" class="email" placeholder="Email *" required></div>
                 <div><textarea class="notes" placeholder="Notes *" required></textarea></div>
-                <button type="submit" class="submit-btn">Submit</button>
+                <div>
+                    <button type="submit" class="submit-btn">Submit</button>
+                    <button type="button" class="dismiss-btn">Dismiss</button>
+                </div>
             </div>
-            <button type="button" class="dismiss-btn">Dismiss</button>
             <div class="output hidden">
                 <div class="output-data"></div>
                 <button type="button" class="toggle-btn">Maximize</button>
@@ -28,9 +30,11 @@ export const formTemplates = {
                 <div><input type="text" class="customerName" placeholder="Customer Name *" required></div>
                 <div><input type="email" class="email" placeholder="Email *" required></div>
                 <div><textarea class="notes" placeholder="Notes *" required></textarea></div>
-                <button type="submit" class="submit-btn">Submit</button>
+                <div>
+                    <button type="submit" class="submit-btn">Submit</button>
+                    <button type="button" class="dismiss-btn">Dismiss</button>
+                </div>
             </div>
-            <button type="button" class="dismiss-btn">Dismiss</button>
             <div class="output hidden">
                 <div class="output-data"></div>
                 <button type="button" class="toggle-btn">Maximize</button>
