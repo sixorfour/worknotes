@@ -116,5 +116,15 @@ function changeCallType(type, button) {
         }
     });
 
-    addSubmitListener(newForm, formContainer);
+    var dismissButton = newForm.querySelector('.dismiss-btn');
+    dismissButton.addEventListener('click', function() {
+        formContainer.remove();
+    });
+
+    var toggleButton = newForm.querySelector('.toggle-btn');
+    toggleButton.addEventListener('click', function() {
+        toggleForm(newForm);
+    });
+
+    addSubmitListener(newForm);
 }
