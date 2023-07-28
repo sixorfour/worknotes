@@ -75,16 +75,22 @@ function toggleForm(form) {
     var input = form.querySelector('.input');
     var output = form.querySelector('.output');
     var toggleButton = form.querySelector('.toggle-btn');
+    var dismissButton = form.querySelector('.dismiss-btn');
+
     if (input.classList.contains('hidden')) {
         input.classList.remove('hidden');
         output.classList.add('hidden');
         toggleButton.textContent = 'Minimize';
+        if (dismissButton) { // This condition checks if the dismiss button exists
+            dismissButton.style.display = 'none'; // This line hides the dismiss button when the form is maximized
+        }
     } else {
         input.classList.add('hidden');
         output.classList.remove('hidden');
         toggleButton.textContent = 'Maximize';
     }
 }
+
 
 function changeCallType(type, button) {
     var formContainer = button.parentElement.parentElement;
