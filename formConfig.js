@@ -4,11 +4,11 @@ export const formTemplates = {
     'customer': `
         <form class="callForm" data-type="customer">
             <div class="input">
-                <div><input type="text" class="accountNumber" placeholder="Account Number" required><span> *required</span></div>
-                <div><input type="text" class="phoneNumber" placeholder="Phone" required><span> *required</span></div>
-                <div><input type="text" class="customerName" placeholder="Customer Name" required><span> *required</span></div>
-                <div><input type="email" class="email" placeholder="Email" required><span> *required</span></div>
-                <div><textarea class="notes" placeholder="Notes" required></textarea><span> *required</span></div>
+                <div><input type="text" class="accountNumber" placeholder="Account Number *required" required></div>
+                <div><input type="text" class="phoneNumber" placeholder="Phone *required" required></div>
+                <div><input type="text" class="customerName" placeholder="Customer Name *required" required></div>
+                <div><input type="email" class="email" placeholder="Email *required" required></div>
+                <div><textarea class="notes" placeholder="Notes *required" required></textarea></div>
                 <button type="submit" class="submit-btn">Submit</button>
             </div>
             <div class="output hidden">
@@ -22,12 +22,12 @@ export const formTemplates = {
     'mdu customer': `
         <form class="callForm" data-type="mdu">
             <div class="input">
-                <div><input type="text" class="hoaName" placeholder="HOA/MDU Name" required><span> *required</span></div>
-                <div><input type="text" class="siteId" placeholder="SiteID/Address" required><span> *required</span></div>
-                <div><input type="text" class="phoneNumber" placeholder="Phone" required><span> *required</span></div>
-                <div><input type="text" class="customerName" placeholder="Customer Name" required><span> *required</span></div>
-                <div><input type="email" class="email" placeholder="Email" required><span> *required</span></div>
-                <div><textarea class="notes" placeholder="Notes" required></textarea><span> *required</span></div>
+                <div><input type="text" class="hoaName" placeholder="HOA/MDU Name *required" required></div>
+                <div><input type="text" class="siteId" placeholder="SiteID/Address *required" required></div>
+                <div><input type="text" class="phoneNumber" placeholder="Phone *required" required></div>
+                <div><input type="text" class="customerName" placeholder="Customer Name *required" required></div>
+                <div><input type="email" class="email" placeholder="Email *required" required></div>
+                <div><textarea class="notes" placeholder="Notes *required" required></textarea></div>
                 <button type="submit" class="submit-btn">Submit</button>
             </div>
             <div class="output hidden">
@@ -40,6 +40,7 @@ export const formTemplates = {
     `,
     // Add more form templates here...
 };
+
 
 export const formHandlers = {
     'customer': function(form) {
