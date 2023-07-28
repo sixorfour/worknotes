@@ -19,6 +19,7 @@
 .submit-btn {
     background-color: green;
     color: white;
+    padding-left: 5px; /* Add 5px space to the left of the submit button */
 }
 
 textarea {
