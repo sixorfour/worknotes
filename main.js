@@ -40,13 +40,11 @@ function addSubmitListener(form, formContainer) {
         updateForm(form);
         toggleForm(form, formContainer);
 
-        var dismissButton = form.querySelector('.dismiss-btn');
-        dismissButton.remove(); // Removes the dismiss button when the form is submitted
-    });
+        var submitButton = form.querySelector('.submit-btn');
+        submitButton.textContent = "Save"; // Changes the submit button text to "Save"
 
-    var dismissButton = form.querySelector('.dismiss-btn');
-    dismissButton.addEventListener('click', function() {
-        formContainer.remove();
+        var dismissButton = formContainer.querySelector('.dismiss-btn');
+        dismissButton.remove(); // Removes the dismiss button when the form is submitted
     });
 
     var deleteButton = form.querySelector('.delete-btn');
@@ -72,16 +70,18 @@ function toggleForm(form, formContainer) {
     var output = form.querySelector('.output');
     var toggleButton = form.querySelector('.toggle-btn');
     var callTypeBtnContainer = formContainer.querySelector('.call-type-btn-container');
+    var submitButton = form.querySelector('.submit-btn');
 
     if (input.classList.contains('hidden')) {
         input.classList.remove('hidden');
         output.classList.add('hidden');
-        toggleButton.textContent = 'Minimize'; // This remains the same
+        toggleButton.textContent = 'Minimize';
         callTypeBtnContainer.style.display = 'flex';
+        submitButton.textContent = "Submit"; // Changes the submit button text back to "Submit"
     } else {
         input.classList.add('hidden');
         output.classList.remove('hidden');
-        toggleButton.textContent = 'Edit'; // This changes from "Maximize" to "Edit"
+        toggleButton.textContent = 'Edit';
         callTypeBtnContainer.style.display = 'none';
     }
 }
