@@ -3,23 +3,23 @@
 export const formTemplates = {
     'customer': `
         <form class="callForm" data-type="customer">
-            <input type="text" class="accountNumber" placeholder="Account Number" required> *required
-            <input type="text" class="phoneNumber" placeholder="Phone" required> *required
-            <input type="text" class="customerName" placeholder="Customer Name" required> *required
-            <input type="email" class="email" placeholder="Email" required> *required
-            <textarea class="notes" placeholder="Notes" required></textarea> *required
+            <div><input type="text" class="accountNumber" placeholder="Account Number" required><span> *required</span></div>
+            <div><input type="text" class="phoneNumber" placeholder="Phone" required><span> *required</span></div>
+            <div><input type="text" class="customerName" placeholder="Customer Name" required><span> *required</span></div>
+            <div><input type="email" class="email" placeholder="Email" required><span> *required</span></div>
+            <div><textarea class="notes" placeholder="Notes" required></textarea><span> *required</span></div>
             <button type="submit" class="submit-btn">Submit</button>
             <button type="button" class="dismiss-btn">Dismiss</button>
         </form>
     `,
     'mdu customer': `
         <form class="callForm" data-type="mdu">
-            <input type="text" class="hoaName" placeholder="HOA/MDU Name" required> *required
-            <input type="text" class="siteId" placeholder="SiteID/Address" required> *required
-            <input type="text" class="phoneNumber" placeholder="Phone" required> *required
-            <input type="text" class="customerName" placeholder="Customer Name" required> *required
-            <input type="email" class="email" placeholder="Email" required> *required
-            <textarea class="notes" placeholder="Notes" required></textarea> *required
+            <div><input type="text" class="hoaName" placeholder="HOA/MDU Name" required><span> *required</span></div>
+            <div><input type="text" class="siteId" placeholder="SiteID/Address" required><span> *required</span></div>
+            <div><input type="text" class="phoneNumber" placeholder="Phone" required><span> *required</span></div>
+            <div><input type="text" class="customerName" placeholder="Customer Name" required><span> *required</span></div>
+            <div><input type="email" class="email" placeholder="Email" required><span> *required</span></div>
+            <div><textarea class="notes" placeholder="Notes" required></textarea><span> *required</span></div>
             <button type="submit" class="submit-btn">Submit</button>
             <button type="button" class="dismiss-btn">Dismiss</button>
         </form>
