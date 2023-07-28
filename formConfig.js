@@ -3,25 +3,39 @@
 export const formTemplates = {
     'customer': `
         <form class="callForm" data-type="customer">
-            <div><input type="text" class="accountNumber" placeholder="Account Number" required><span> *required</span></div>
-            <div><input type="text" class="phoneNumber" placeholder="Phone" required><span> *required</span></div>
-            <div><input type="text" class="customerName" placeholder="Customer Name" required><span> *required</span></div>
-            <div><input type="email" class="email" placeholder="Email" required><span> *required</span></div>
-            <div><textarea class="notes" placeholder="Notes" required></textarea><span> *required</span></div>
-            <button type="submit" class="submit-btn">Submit</button>
-            <button type="button" class="dismiss-btn">Dismiss</button>
+            <div class="input">
+                <div><input type="text" class="accountNumber" placeholder="Account Number" required><span> *required</span></div>
+                <div><input type="text" class="phoneNumber" placeholder="Phone" required><span> *required</span></div>
+                <div><input type="text" class="customerName" placeholder="Customer Name" required><span> *required</span></div>
+                <div><input type="email" class="email" placeholder="Email" required><span> *required</span></div>
+                <div><textarea class="notes" placeholder="Notes" required></textarea><span> *required</span></div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+            <div class="output hidden">
+                <div class="output-data"></div>
+                <button type="button" class="update-btn">Update</button>
+                <button type="button" class="toggle-btn">Maximize</button>
+                <button type="button" class="delete-btn">Delete</button>
+            </div>
         </form>
     `,
     'mdu customer': `
         <form class="callForm" data-type="mdu">
-            <div><input type="text" class="hoaName" placeholder="HOA/MDU Name" required><span> *required</span></div>
-            <div><input type="text" class="siteId" placeholder="SiteID/Address" required><span> *required</span></div>
-            <div><input type="text" class="phoneNumber" placeholder="Phone" required><span> *required</span></div>
-            <div><input type="text" class="customerName" placeholder="Customer Name" required><span> *required</span></div>
-            <div><input type="email" class="email" placeholder="Email" required><span> *required</span></div>
-            <div><textarea class="notes" placeholder="Notes" required></textarea><span> *required</span></div>
-            <button type="submit" class="submit-btn">Submit</button>
-            <button type="button" class="dismiss-btn">Dismiss</button>
+            <div class="input">
+                <div><input type="text" class="hoaName" placeholder="HOA/MDU Name" required><span> *required</span></div>
+                <div><input type="text" class="siteId" placeholder="SiteID/Address" required><span> *required</span></div>
+                <div><input type="text" class="phoneNumber" placeholder="Phone" required><span> *required</span></div>
+                <div><input type="text" class="customerName" placeholder="Customer Name" required><span> *required</span></div>
+                <div><input type="email" class="email" placeholder="Email" required><span> *required</span></div>
+                <div><textarea class="notes" placeholder="Notes" required></textarea><span> *required</span></div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+            <div class="output hidden">
+                <div class="output-data"></div>
+                <button type="button" class="update-btn">Update</button>
+                <button type="button" class="toggle-btn">Maximize</button>
+                <button type="button" class="delete-btn">Delete</button>
+            </div>
         </form>
     `,
     // Add more form templates here...
