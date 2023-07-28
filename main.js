@@ -4,8 +4,6 @@ import { formTemplates, formHandlers } from './formConfig.js';
 
 console.log("JavaScript file is loaded");
 
-var lastFormData = null;
-
 var newCallBtn = document.getElementById('newCallBtn');
 console.log(newCallBtn);
 
@@ -33,29 +31,29 @@ newCallBtn.addEventListener('click', function() {
     });
 
     var callForm = formContainer.querySelector('.callForm');
-    addSubmitListener(callForm);
+    addSubmitListener(callForm, formContainer);
 });
 
-function addSubmitListener(form) {
+function addSubmitListener(form, formContainer) {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         updateForm(form);
-        toggleForm(form);
+        toggleForm(form, formContainer);
     });
 
-    var dismissButton = form.querySelector('.dismiss-btn');
+    var dismissButton = formContainer.querySelector('.dismiss-btn');
     dismissButton.addEventListener('click', function() {
-        form.parentElement.remove();
+        formContainer.remove();
     });
 
     var deleteButton = form.querySelector('.delete-btn');
     deleteButton.addEventListener('click', function() {
-        form.parentElement.remove();
+        formContainer.remove();
     });
 
     var toggleButton = form.querySelector('.toggle-btn');
     toggleButton.addEventListener('click', function() {
-        toggleForm(form);
+        toggleForm(form, formContainer);
     });
 }
 
@@ -66,25 +64,28 @@ function updateForm(form) {
     outputData.textContent = formData;
 }
 
-function toggleForm(form) {
+function toggleForm(form, formContainer) {
     var input = form.querySelector('.input');
     var output = form.querySelector('.output');
     var toggleButton = form.querySelector('.toggle-btn');
-    var callTypeButtons = form.parentElement.querySelector('.call-type-btn-container');
+    var dismissButton = formContainer.querySelector('.dismiss-btn');
+    var callTypeBtnContainer = formContainer.querySelector('.call-type-btn-container');
 
     if (input.classList.contains('hidden')) {
         input.classList.remove('hidden');
         output.classList.add('hidden');
         toggleButton.textContent = 'Minimize';
-        if (callTypeButtons) {
-            callTypeButtons.style.display = 'flex';
+        callTypeBtnContainer.style.display = 'flex';
+        if (dismissButton) { // This condition checks if the dismiss button exists
+            dismissButton.style.display = 'inline'; // This line shows the dismiss button when the form is minimized
         }
     } else {
         input.classList.add('hidden');
         output.classList.remove('hidden');
         toggleButton.textContent = 'Maximize';
-        if (callTypeButtons) {
-            callTypeButtons.style.display = 'none';
+        callTypeBtnContainer.style.display = 'none';
+        if (dismissButton) {
+            dismissButton.style.display = 'none';
         }
     }
 }
@@ -124,5 +125,5 @@ function changeCallType(type, button) {
         }
     });
 
-    addSubmitListener(newForm);
+    addSubmitListener(newForm, formContainer);
 }
