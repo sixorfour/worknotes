@@ -4,8 +4,6 @@ import { formTemplates, formHandlers } from './formConfig.js';
 
 console.log("JavaScript file is loaded");
 
-var lastFormData = null;
-
 var newCallBtn = document.getElementById('newCallBtn');
 console.log(newCallBtn);
 
@@ -32,42 +30,63 @@ newCallBtn.addEventListener('click', function() {
         });
     });
 
-    var dismissButton = formContainer.querySelector('.dismiss-btn');
+    var callForm = formContainer.querySelector('.callForm');
+    addSubmitListener(callForm, formContainer);
+
+    var dismissButton = callForm.querySelector('.dismiss-btn');
     dismissButton.addEventListener('click', function() {
         formContainer.remove();
     });
-
-    var callForm = formContainer.querySelector('.callForm');
-    addSubmitListener(callForm);
 });
 
-function addSubmitListener(form) {
+function addSubmitListener(form, formContainer) {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        var formType = form.dataset.type; // assuming you have added a 'type' dataset to the form
-        console.log("Form type: ", formType); // Debugging line
-        var formData = formHandlers[formType](form);
-        console.log("Form data: ", formData); // Debugging line
+        updateForm(form);
+        toggleForm(form, formContainer);
 
-        if ( formData === lastFormData) {
-            alert('You have already submitted this information.');
-            return;
-        }
-
-        // Your code to display formData...
-        console.log("Displaying form data..."); // Debugging line
-        var infoContainer = document.getElementById('infoContainer');
-        console.log(infoContainer);
-        var infoItem = document.createElement('div');
-        console.log(infoItem);
-        infoItem.className = 'info-item';
-        infoItem.textContent = formData;
-        console.log(infoItem); // Changed from console.log(info);
-        infoContainer.appendChild(infoItem);
-        console.log("Form data displayed."); // Debugging line
-
-        lastFormData = formData;
+        var dismissButton = formContainer.querySelector('.dismiss-btn');
+        dismissButton.remove(); // Removes the dismiss button when the form is submitted
     });
+
+    var deleteButton = form.querySelector('.delete-btn');
+    deleteButton.addEventListener('click', function() {
+        formContainer.remove();
+    });
+
+    var toggleButton = form.querySelector('.toggle-btn');
+    toggleButton.addEventListener('click', function() {
+        toggleForm(form, formContainer);
+    });
+}
+
+function updateForm(form) {
+    var formType = form.dataset.type; // assuming you have added a 'type' dataset to the form
+    var formData = formHandlers[formType](form);
+    var outputData = form.querySelector('.output-data');
+    outputData.textContent = formData;
+}
+
+function toggleForm(form, formContainer) {
+    var input = form.querySelector('.input');
+    var output = form.querySelector('.output');
+    var toggleButton = form.querySelector('.toggle-btn');
+    var callTypeBtnContainer = formContainer.querySelector('.call-type-btn-container');
+    var submitButton = form.querySelector('.submit-btn');
+
+    if (input.classList.contains('hidden')) {
+        input.classList.remove('hidden');
+        output.classList.add('hidden');
+        toggleButton.textContent = 'Minimize';
+        submitButton.textContent = 'Submit';
+        callTypeBtnContainer.style.display = 'flex';
+    } else {
+        input.classList.add('hidden');
+        output.classList.remove('hidden');
+        toggleButton.textContent = 'Edit';
+        submitButton.textContent = 'Save';
+        callTypeBtnContainer.style.display = 'none';
+    }
 }
 
 function changeCallType(type, button) {
@@ -105,10 +124,10 @@ function changeCallType(type, button) {
         }
     });
 
-    var dismissButton = newForm.querySelector('.dismiss-btn');
-    dismissButton.addEventListener('click', function() {
-        formContainer.remove();
+    var toggleButton = newForm.querySelector('.toggle-btn');
+    toggleButton.addEventListener('click', function() {
+        toggleForm(newForm, formContainer);
     });
 
-    addSubmitListener(newForm);
+    addSubmitListener(newForm, formContainer);
 }
